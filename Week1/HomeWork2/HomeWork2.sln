@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimeFactor", "PrimeFactor\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntArray", "IntArray\IntArray.csproj", "{5AA26BFD-40D1-4D1C-A6EE-A2E4498B4755}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISieve", "ISieve\ISieve.csproj", "{3A196F98-ABF3-47A9-A423-119B0C7E3384}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5AA26BFD-40D1-4D1C-A6EE-A2E4498B4755}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AA26BFD-40D1-4D1C-A6EE-A2E4498B4755}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AA26BFD-40D1-4D1C-A6EE-A2E4498B4755}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A196F98-ABF3-47A9-A423-119B0C7E3384}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A196F98-ABF3-47A9-A423-119B0C7E3384}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A196F98-ABF3-47A9-A423-119B0C7E3384}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A196F98-ABF3-47A9-A423-119B0C7E3384}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
