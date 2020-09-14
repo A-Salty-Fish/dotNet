@@ -12,6 +12,10 @@ namespace Homework1
             return Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
         }
         public Point[] PointsList = new Point[4];
+
+        public Rectangle()
+        {
+        }
         public Rectangle(Point a, Point b, Point c, Point d)
         {
             PointsList[0] = a;
