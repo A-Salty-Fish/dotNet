@@ -31,8 +31,6 @@ namespace Homework1
 
         public double GetArea()
         {
-            if (!IsLegal())
-                return 0;
             double Length1 = Math.Sqrt(
                 (PointsList[2].Y - PointsList[1].Y) * (PointsList[2].Y - PointsList[1].Y) +
                 (PointsList[2].X - PointsList[1].X) * (PointsList[2].X - PointsList[1].X)

@@ -52,8 +52,6 @@ namespace Homework1
 
         public double GetArea()
         {
-            if (!IsLegal())
-                return 0;
             return GetDist(PointsList[0].X, PointsList[0].Y, PointsList[1].X, PointsList[1].Y)
                    * GetDist(PointsList[1].X, PointsList[1].Y, PointsList[2].X, PointsList[2].Y);
         }
