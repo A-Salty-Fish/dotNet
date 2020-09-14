@@ -8,12 +8,12 @@ namespace Homework1
         static void Main(string[] args)
         {
             Point a = new Point(3,4);
+            Point d = new Point(4,5);
             Point b = new Point(5, 6);
             Point c = new Point(6, 6);
 
-            TriAngle triAngle = new TriAngle(a, b, c);
-            triAngle.ShowPoints();
-            Console.WriteLine(triAngle.GetArea());
+
+            Rectangle rectangle = new Rectangle(a,d,b,c);
         }
     }
 }
