@@ -35,14 +35,8 @@ namespace OrderManageSystem
 
         public bool GoodExists(string goodname)
         {
-            foreach (var g in GoodsList)
-            {
-                if (g.name == goodname)
-                {
-                    return true;
-                }
-            }
-            return false;
+            var result = GoodsList.Where(g => g.name == goodname);
+            return result.FirstOrDefault() != null;
         }
 
         public double GetPrice(string goodname)
