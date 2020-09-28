@@ -24,8 +24,6 @@ namespace OrderManageSystem
 
         public void DelOrder(String id)
         {
-            bool flag = false;
-            //注意，不能在foreach中对集合进行修改 可使用For循环进行
             var result = OrderList.Where(i => i.ID == id);
             if (result.FirstOrDefault()==null)
                 throw new OrderInvalidException("欲删除的订单不存在。");
