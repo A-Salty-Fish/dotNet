@@ -6,7 +6,7 @@ using System.Text;
 
 namespace OrderManageSystem
 {
-    class CMDServiceIO: IServiceIO //客户端命令行交互接口
+    public class CMDServiceIO: IServiceIO //客户端命令行交互接口
     {
         public void InputOrderItemIO(int i,OrderItem orderItem)
         {
@@ -21,7 +21,9 @@ namespace OrderManageSystem
             if (!double.TryParse(Console.ReadLine(), out goodsPrice)) throw new Exception("Invalid goods' price Input.\n");
             Console.Write("Please enter the goods" + (i + 1) + "'s number:");
             if (!int.TryParse(Console.ReadLine(),out goodsNum)) throw new Exception("Invalid goods' num input.\n");
-            orderItem.goods = new Goods(goodsName, goodsPrice, goodsNum);
+            orderItem.price = goodsPrice;
+            orderItem.number = goodsNum;
+            orderItem.name = goodsName;
         }
 
         public void InputOrderIO(Order order)
@@ -32,8 +34,7 @@ namespace OrderManageSystem
             Console.Write("----------\nPlease enter the Custormer's name:");
             customerName = Console.ReadLine();
             if (customerName == "") throw new Exception("name can't be empty.\n");
-            Custormer custormer = new Custormer(customerName);
-            order.custormer = custormer;
+            order.custormer = customerName;
             //创建订单项目
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("----------\nPlease enter the order item's num:");
@@ -177,6 +178,13 @@ namespace OrderManageSystem
             }
         }
 
+        public string GetFileName()
+        {
+            Console.Write("Please enter the file's name:");
+            string input = Console.ReadLine();
+            return input;
+        }
+
         public void StartMenu()
         {
             OrderService orderService = new OrderService();
@@ -187,7 +195,12 @@ namespace OrderManageSystem
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.Write(
-                        "----------\nPlease enter a number.\n 1 to add;   2 to delete;\n 3 to modify;4 to show all;\n 5 to search; 6 to Sort;\nothers to quit:");
+                        "----------\nPlease enter a number." +
+                        "\n 1 to add;   2 to delete;" +
+                        "\n 3 to modify;4 to show all;" +
+                        "\n 5 to search; 6 to Sort;" +
+                        "\n 7 to export; 8 to import" +
+                        "\nother num to quit:");
                     num = int.Parse(Console.ReadLine());
                     switch (num)
                     {
@@ -209,13 +222,19 @@ namespace OrderManageSystem
                         case 6:
                             orderService.SortBySomeWay();
                             break;
+                        case 7:
+                            orderService.Export();
+                            break;
+                        case 8:
+                            orderService.Import();
+                            break;
                         default: return;
                     }
                 }
                 catch (Exception e)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed; 
-                    Console.Write("Error:"+e.Message+'\n'); 
+                    Console.Write("Error:"+e+'\n'); 
                     continue;
                 }
             }
