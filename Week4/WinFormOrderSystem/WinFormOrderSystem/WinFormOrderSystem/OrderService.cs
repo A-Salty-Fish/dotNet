@@ -63,31 +63,19 @@ namespace OrderManageSystem
             switch (op)
             {
                 case "ID":
-                    var olist = from o in OrderList
-                                where o.ID == src
-                                select o;
-                    foreach (var o in olist)
-                    {
+                    var IDResult = OrderList.Where(o => o.ID == src);
+                    foreach (var o in IDResult)
                         re.Add(o);
-                    }
                     return re;
                 case "Product":
-                    var olist1 = from o in OrderList
-                                 where o.HasGood(src)
-                                 select o;
-                    foreach (var o in olist1)
-                    {
+                    var ProResult = OrderList.Where(o => o.HasGood(src));
+                    foreach (var o in ProResult)
                         re.Add(o);
-                    }
                     return re;
                 case "Customer":
-                    var olist2 = from o in OrderList
-                                 where o.Customer == src
-                                 select o;
-                    foreach (var o in olist2)
-                    {
+                    var CusResult = OrderList.Where(o => o.Customer == src);
+                    foreach (var o in CusResult)
                         re.Add(o);
-                    }
                     return re;
                 default:
                     throw new InvalidQueryException("错误的查询依据。");
