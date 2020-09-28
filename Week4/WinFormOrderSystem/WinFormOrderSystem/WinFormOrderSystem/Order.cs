@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
 
@@ -97,12 +98,8 @@ namespace OrderManageSystem
 
         public bool HasGood(String pname)
         {
-            foreach (var i in Items)
-            {
-                if (i.Pname == pname)
-                    return true;
-            }
-            return false;
+            var result = Items.Where(i => i.Pname == pname);
+            return result.FirstOrDefault() != null;
         }
 
         private static string GetOrderID(string customer)
@@ -117,10 +114,8 @@ namespace OrderManageSystem
         {
             byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
             StringBuilder sBuilder = new StringBuilder();
-            for (int i = 0; i < data.Length; i++)
-            {
-                sBuilder.Append(data[i].ToString("x2"));
-            }
+            foreach (var str in data)
+                sBuilder.Append(str.ToString("x2"));
             return sBuilder.ToString();
         }
 
