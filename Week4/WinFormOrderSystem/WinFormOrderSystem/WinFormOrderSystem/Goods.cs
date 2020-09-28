@@ -30,7 +30,7 @@ namespace OrderManageSystem
         {
             Random r = new Random();
             for (int i = 0; i < 5; i++)
-                GoodsList.Add(new Good() { name = GoodsArrays.Names[i], price = r.Next() });
+                GoodsList.Add(new Good() { name = GoodsArrays.Names[i], price = r.Next() % 10 + 1});
         }
 
         public bool GoodExists(string goodname)
@@ -41,14 +41,8 @@ namespace OrderManageSystem
 
         public double GetPrice(string goodname)
         {
-            foreach (var g in GoodsList)
-            {
-                if (g.name == goodname)
-                {
-                    return g.price;
-                }
-            }
-            return 0;
+            var result = GoodsList.Where(g => g.name == goodname);
+            return result.FirstOrDefault() == null ? 0 : result.FirstOrDefault().price;
         }
     }
 
