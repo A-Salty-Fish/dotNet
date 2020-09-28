@@ -51,25 +51,10 @@ namespace OrderManageSystem
 
         public void ModifyOrder(String id, String pname, int pnum)
         {
-            bool flag = false;
-            Order order = null;
-            foreach (var o in OrderList)
-            {
-                if (o.ID == id)
-                {
-                    order = o;
-                    flag = true;
-                }
-            }
-            if (flag == true)
-            {
-                order.ModifyItem(pname, pnum);
-            }
-            else
-            {
+            var result = OrderList.Where(o => o.ID == id);
+            if (result.FirstOrDefault()==null)
                 throw new OrderInvalidException("欲修改的订单不存在。");
-            }
-
+            result.FirstOrDefault().ModifyItem(pname, pnum);
         }
 
         public List<Order> Query(String op, String src)
