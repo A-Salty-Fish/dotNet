@@ -26,19 +26,10 @@ namespace OrderManageSystem
         {
             bool flag = false;
             //注意，不能在foreach中对集合进行修改 可使用For循环进行
-            for(var i=0;i<OrderList.Count;i++)
-            {
-                if(OrderList[i].ID==id)
-                {
-                    OrderList.Remove(OrderList[i]);
-                    flag = true;
-                }
-            }
-
-            if (flag == false)
-            {
+            var result = OrderList.Where(i => i.ID == id);
+            if (result.FirstOrDefault()==null)
                 throw new OrderInvalidException("欲删除的订单不存在。");
-            }
+            OrderList.Remove(result.FirstOrDefault());
         }
 
         public void SortOrder(string op)
